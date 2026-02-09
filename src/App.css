@@ -1,38 +1,265 @@
-.App {
-  text-align: center;
+/* --- Step 0: Import Fonts --- */
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;700;800&family=Markazi+Text:wght@500;700&display=swap");
+
+/* --- Step 1: Design Variables & Global Styles --- */
+:root {
+  --primary-green: #495e57;
+  --primary-yellow: #f4ce14;
+  --secondary-orange: #ee9972;
+  --secondary-beige: #fbdabb;
+  --highlight-gray: #edefee;
+  --dark-text: #333333;
+  --card-radius: 16px;
+  --shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: "Karla", sans-serif;
+  color: var(--dark-text);
+  line-height: 1.5;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* --- Step 2: Typography --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Markazi Text", serif;
+  font-weight: 500; /* As per Figma design */
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 4rem; /* 64px */
+  color: var(--primary-yellow);
+  line-height: 1;
+}
+
+h2 {
+  font-size: 2.5rem; /* 40px */
+  color: var(--dark-text);
+}
+
+h3 {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 800;
+}
+
+p {
+  font-size: 1rem; /* 16px */
+  margin-bottom: 1rem;
+}
+
+/* --- FIX: Header Layout --- */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4rem; /* Add more padding */
+  background-color: white; /* Header background */
+}
+
+.logo-container img {
+  height: 50px; /* Control logo size */
+}
+
+/* --- Step 3: Navigation --- */
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--primary-green);
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--secondary-orange);
+}
+
+/* --- Main Content Layout --- */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 4rem;
+}
+
+/* --- FIX: Hero Section Layout --- */
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: var(--primary-green);
+  color: white;
+  border-radius: var(--card-radius);
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.hero-content h2 {
+  color: white; /* Subtitle color */
+  font-size: 2rem;
+  font-weight: 400;
+}
+.hero-content p {
+  color: var(--highlight-gray);
+  font-size: 1.2rem;
+  margin: 1.5rem 0;
+}
+.hero-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: var(--card-radius);
+}
+
+/* --- Button Styling --- */
+.button-primary {
+  background-color: var(--primary-yellow);
+  color: var(--dark-text);
+  text-decoration: none;
+  padding: 0.8rem 2rem;
+  border-radius: var(--card-radius);
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+.button-primary:hover {
+  background-color: var(--secondary-orange);
+}
+
+/* --- FIX: Specials Section Layout --- */
+.specials-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* Card Grid */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* Card Styling */
+.card {
+  background-color: var(--highlight-gray);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden; /* Important for border-radius on image */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Makes card content fill the space */
+}
+.card-content p {
+  flex-grow: 1; /* Pushes the link to the bottom */
+}
+
+/* --- FIX: Card Title Layout --- */
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+.price {
+  color: var(--secondary-orange);
+  font-weight: 700;
+}
+
+.card-content a {
+  font-weight: 700;
+  color: var(--dark-text);
+  text-decoration: none;
+}
+
+/* --- Footer --- */
+footer {
+  background-color: var(--primary-green);
   color: white;
+  padding: 4rem 2rem;
+  margin-top: 4rem;
+}
+footer section {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+footer img {
+  height: 80px;
+}
+footer h3 {
+  margin-bottom: 1rem;
+  color: var(--primary-yellow);
+}
+footer ul {
+  list-style: none;
+}
+footer li {
+  margin-bottom: 0.5rem;
+}
+footer a {
+  color: var(--highlight-gray);
+  text-decoration: none;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* --- Responsiveness --- */
+@media (max-width: 992px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    text-align: center;
   }
-  to {
-    transform: rotate(360deg);
+  .hero-image {
+    display: none; /* Hide image on smaller tablets for better focus */
+  }
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  footer section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  nav ul {
+    gap: 1rem;
+  }
+  main {
+    padding: 1rem;
+  }
+  .cards-container,
+  footer section {
+    grid-template-columns: 1fr;
   }
 }

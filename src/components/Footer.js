@@ -1,16 +1,13 @@
 // src/components/Footer.js
 import React from "react";
+import footerLogo from "../assets/Logo.svg"; // می‌توانید از لوگوی مخصوص فوتر استفاده کنید
 
 function Footer() {
   return (
     <footer>
       <section>
-        <div>
-          {/* لوگو یا عکس فوتر */}
-          <img
-            src={require("../assets/logo.svg").default}
-            alt="Little Lemon Logo"
-          />
+        <div className="company-info">
+          <img src={footerLogo} alt="Little Lemon Logo" />
         </div>
         <div>
           <h3>Doormat Navigation</h3>
@@ -21,15 +18,26 @@ function Footer() {
             <li>
               <a href="/about">About</a>
             </li>
-            {/* ... بقیه لینک‌ها */}
+            <li>
+              <a href="/menu">Menu</a>
+            </li>
+            <li>
+              <a href="/reservations">Reservations</a>
+            </li>
+            <li>
+              <a href="/order">Order Online</a>
+            </li>
+            <li>
+              <a href="/login">Login</a>
+            </li>
           </ul>
         </div>
         <div>
           <h3>Contact</h3>
           <ul>
-            <li>Address</li>
-            <li>Phone Number</li>
-            <li>Email</li>
+            <li>Address: 123 Town Street, Chicago</li>
+            <li>Phone: +00 123 456 789</li>
+            <li>Email: little@lemon.com</li>
           </ul>
         </div>
         <div>
@@ -40,6 +48,9 @@ function Footer() {
             </li>
             <li>
               <a href="/">Instagram</a>
+            </li>
+            <li>
+              <a href="/">Twitter</a>
             </li>
           </ul>
         </div>

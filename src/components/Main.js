@@ -1,3 +1,4 @@
+// src/components/Main.js
 import React from "react";
 import heroImage from "../assets/restauranfood.jpg";
 import greekSalad from "../assets/greek_salad.jpg";
@@ -16,7 +17,14 @@ function Main() {
             We are a family owned Mediterranean restaurant, focused on
             traditional recipes served with a modern twist.
           </p>
-          <button aria-label="Reserve a Table">Reserve a Table</button>
+          <a
+            href="/reservations"
+            className="button-primary"
+            role="button"
+            aria-label="Reserve a Table"
+          >
+            Reserve a Table
+          </a>
         </div>
         <div className="hero-image">
           <img src={heroImage} alt="Delicious restaurant food" />
@@ -27,64 +35,70 @@ function Main() {
       <section className="specials-section">
         <div className="specials-header">
           <h2>This weeks specials!</h2>
-          <button aria-label="Online Menu">Online Menu</button>
+          <a
+            href="/menu"
+            className="button-primary"
+            role="button"
+            aria-label="Online Menu"
+          >
+            Online Menu
+          </a>
         </div>
 
         <div className="cards-container">
-          {/* Card 1 */}
+          {/* Card 1: Greek Salad */}
           <article className="card">
             <img src={greekSalad} alt="Greek Salad" />
             <div className="card-content">
-              <div className="card-header">
-                <h3>Greek salad</h3>
-                <span>$12.99</span>
+              <div className="card-title">
+                <h3>Greek Salad</h3>
+                <span className="price">$12.99</span>
               </div>
               <p>
                 The famous greek salad of crispy lettuce, peppers, olives and
                 our Chicago style feta cheese, garnished with crunchy garlic and
                 rosemary croutons.
               </p>
-              <div className="card-footer">
-                <strong>Order a delivery</strong>
-                {/* اینجا می‌توانید آیکون موتورسیکلت را اضافه کنید */}
-              </div>
+              <a href="/order" role="button">
+                Order a delivery
+              </a>
             </div>
           </article>
 
-          {/* Card 2 */}
+          {/* Card 2: Bruchetta */}
           <article className="card">
             <img src={bruchetta} alt="Bruchetta" />
             <div className="card-content">
-              <div className="card-header">
+              <div className="card-title">
                 <h3>Bruchetta</h3>
-                <span>$ 5.99</span>
+                <span className="price">$5.99</span>
               </div>
               <p>
                 Our Bruschetta is made from grilled bread that has been smeared
                 with garlic and seasoned with salt and olive oil.
               </p>
-              <div className="card-footer">
-                <strong>Order a delivery</strong>
-              </div>
+              <a href="/order" role="button">
+                Order a delivery
+              </a>
             </div>
           </article>
 
-          {/* Card 3 */}
+          {/* Card 3: Lemon Dessert */}
           <article className="card">
             <img src={lemonDessert} alt="Lemon Dessert" />
             <div className="card-content">
-              <div className="card-header">
+              <div className="card-title">
                 <h3>Lemon Dessert</h3>
-                <span>$ 5.00</span>
+                <span className="price">$5.00</span>
               </div>
               <p>
-                This comes straight from grandma's recipe book, every last
+                This comes straight from grandma’s recipe book, every last
                 ingredient has been sourced and is as authentic as can be
                 imagined.
               </p>
-              <div className="card-footer">
-                <strong>Order a delivery</strong>
-              </div>
+              <a href="/order" role="button">
+                Order a delivery
+              </a>
             </div>
           </article>
         </div>
