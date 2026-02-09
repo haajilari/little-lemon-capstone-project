@@ -1,6 +1,5 @@
 import React from "react";
 import Nav from "./Nav";
-// فرض می‌کنیم نام فایل لوگو را به 'logo.svg' تغییر داده‌اید
 import logo from "../assets/Logo.svg";
 
 function Header() {
