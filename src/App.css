@@ -229,6 +229,16 @@ footer a {
   text-decoration: none;
 }
 
+.input-error {
+  border: 2px solid red;
+  background-color: #ffe6e6;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid var(--primary-yellow);
+  border-radius: 4px;
+}
 /* --- Responsiveness --- */
 @media (max-width: 992px) {
   .hero-section {
