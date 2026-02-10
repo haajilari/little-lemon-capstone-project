@@ -1,19 +1,36 @@
 // src/components/Main.js
-import React, { useReducer } from "react";
-import { Routes, Route } from "react-router-dom";
-import HomePage from "./HomePage";
+import React, { useReducer, useEffect } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Header from "./Header";
 import BookingPage from "./BookingPage";
+import ConfirmedBooking from "./ConfirmedBooking";
+import { fetchAPI, submitAPI } from "../services/api";
+import HomePage from "./HomePage";
 
 export const updateTimes = (state, action) => {
-  return state;
+  switch (action.type) {
+    case "UPDATE_TIMES":
+      const selectedDate = new Date(action.payload);
+      return fetchAPI(selectedDate);
+    default:
+      return state;
+  }
 };
 
 export const initializeTimes = () => {
-  return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+  const today = new Date();
+  return fetchAPI(today);
 };
 
 const Main = () => {
   const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+  const navigate = useNavigate();
+
+  const submitForm = (formData) => {
+    if (submitAPI(formData)) {
+      navigate("/confirmed");
+    }
+  };
 
   return (
     <main>
@@ -22,9 +39,14 @@ const Main = () => {
         <Route
           path="/booking"
           element={
-            <BookingPage availableTimes={availableTimes} dispatch={dispatch} />
+            <BookingPage
+              availableTimes={availableTimes}
+              dispatch={dispatch}
+              submitForm={submitForm}
+            />
           }
         />
+        <Route path="/confirmed" element={<ConfirmedBooking />} />
       </Routes>
     </main>
   );
