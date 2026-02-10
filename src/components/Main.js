@@ -14,12 +14,15 @@ const Main = () => {
   const navigate = useNavigate();
 
   const submitForm = (formData) => {
-    if (submitAPI(formData)) {
+    const success = submitAPI(formData);
+    if (success) {
       setBookingData(formData);
+
+      localStorage.setItem("bookings", JSON.stringify(formData));
+
       navigate("/confirmed");
     }
   };
-
   return (
     <main>
       <Routes>
