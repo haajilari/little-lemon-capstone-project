@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
   const [date, setDate] = useState("");
@@ -43,7 +43,16 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
       }, 1000);
     }
   };
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        console.log("Escape pressed - Form cleared (Demo)");
+      }
+    };
 
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
   return (
     <form
       onSubmit={handleSubmit}
