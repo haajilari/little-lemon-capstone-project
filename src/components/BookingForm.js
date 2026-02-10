@@ -6,6 +6,14 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
 
+  const isDateValid = date !== "";
+  const isTimeValid = time !== "";
+  const isGuestsValid = guests >= 1 && guests <= 10;
+  const isOccasionValid = occasion !== "";
+
+  const isValid =
+    isDateValid && isTimeValid && isGuestsValid && isOccasionValid;
+
   const handleDateChange = (e) => {
     const selectedDate = e.target.value;
     setDate(selectedDate);
@@ -14,14 +22,17 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = { date, time, guests, occasion };
-    submitForm(formData);
+    if (isValid) {
+      const formData = { date, time, guests, occasion };
+      submitForm(formData);
+    }
   };
 
   return (
     <form
       onSubmit={handleSubmit}
       style={{ display: "grid", maxWidth: "200px", gap: "20px" }}
+      aria-label="Booking Form"
     >
       <label htmlFor="res-date">Choose date</label>
       <input
@@ -30,6 +41,8 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         value={date}
         onChange={handleDateChange}
         required
+        aria-label="Choose date"
+        aria-required="true"
       />
 
       <label htmlFor="res-time">Choose time</label>
@@ -38,7 +51,12 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         value={time}
         onChange={(e) => setTime(e.target.value)}
         required
+        aria-label="Choose time"
+        aria-required="true"
       >
+        <option value="" disabled>
+          Select a time
+        </option>
         {availableTimes?.map((availableTime) => (
           <option key={availableTime} value={availableTime}>
             {availableTime}
@@ -55,6 +73,9 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         id="guests"
         value={guests}
         onChange={(e) => setGuests(e.target.value)}
+        required
+        aria-label="Number of guests"
+        aria-required="true"
       />
 
       <label htmlFor="occasion">Occasion</label>
@@ -62,12 +83,20 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         id="occasion"
         value={occasion}
         onChange={(e) => setOccasion(e.target.value)}
+        required
+        aria-label="Occasion"
       >
         <option>Birthday</option>
         <option>Anniversary</option>
         <option>Date Night</option>
       </select>
-      <input type="submit" value="Make Your reservation" disabled={!time} />
+
+      <input
+        type="submit"
+        value="Make Your reservation"
+        disabled={!isValid}
+        aria-label="Make Your reservation"
+      />
     </form>
   );
 };
