@@ -46,10 +46,10 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
-        console.log("Escape pressed - Form cleared (Demo)");
+        handleClear();
+        console.log("Form cleared via shortcut");
       }
     };
-
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);

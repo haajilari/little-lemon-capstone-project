@@ -1,6 +1,7 @@
 // src/components/BookingPage.js
 import React from "react";
 import BookingForm from "./BookingForm";
+import HelpSection from "./HelpSection";
 
 const BookingPage = ({ availableTimes, dispatch, submitForm }) => {
   return (
@@ -14,6 +15,7 @@ const BookingPage = ({ availableTimes, dispatch, submitForm }) => {
           dispatch={dispatch}
           submitForm={submitForm}
         />
+        <HelpSection />
       </div>
     </>
   );
