@@ -27,6 +27,6 @@ To run this project locally, follow these steps:
 1. **Clone the repository:**
 
 ```bash
-   git clone <YOUR_GITHUB_REPOSITORY_LINK_HERE>
+   git https://github.com/haajilari/little-lemon-capstone-project.git
 
 ```
