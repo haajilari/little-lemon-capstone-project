@@ -5,21 +5,7 @@ import HomePage from "./HomePage";
 import BookingPage from "./BookingPage";
 import ConfirmedBooking from "./ConfirmedBooking";
 import { fetchAPI, submitAPI } from "../services/api";
-
-export const updateTimes = (state, action) => {
-  switch (action.type) {
-    case "UPDATE_TIMES":
-      const selectedDate = new Date(action.payload);
-      return fetchAPI(selectedDate);
-    default:
-      return state;
-  }
-};
-
-export const initializeTimes = () => {
-  const today = new Date();
-  return fetchAPI(today);
-};
+import { initializeTimes, updateTimes } from "../services/bookingApi";
 
 const Main = () => {
   const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());

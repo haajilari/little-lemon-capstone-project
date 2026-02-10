@@ -1,5 +1,6 @@
 // src/components/Main.test.js
-import { initializeTimes, updateTimes } from "./Main";
+
+import { initializeTimes, updateTimes } from "../services/bookingApi";
 
 test("initializeTimes returns the correct expected value", () => {
   const initialTimes = initializeTimes();
