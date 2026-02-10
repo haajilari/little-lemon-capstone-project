@@ -1,11 +1,10 @@
 // src/components/Main.js
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import Header from "./Header";
+import HomePage from "./HomePage";
 import BookingPage from "./BookingPage";
 import ConfirmedBooking from "./ConfirmedBooking";
 import { fetchAPI, submitAPI } from "../services/api";
-import HomePage from "./HomePage";
 
 export const updateTimes = (state, action) => {
   switch (action.type) {
@@ -24,10 +23,13 @@ export const initializeTimes = () => {
 
 const Main = () => {
   const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+  const [bookingData, setBookingData] = useState(null);
+
   const navigate = useNavigate();
 
   const submitForm = (formData) => {
     if (submitAPI(formData)) {
+      setBookingData(formData);
       navigate("/confirmed");
     }
   };
@@ -46,7 +48,10 @@ const Main = () => {
             />
           }
         />
-        <Route path="/confirmed" element={<ConfirmedBooking />} />
+        <Route
+          path="/confirmed"
+          element={<ConfirmedBooking bookingData={bookingData} />}
+        />
       </Routes>
     </main>
   );

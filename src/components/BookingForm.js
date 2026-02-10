@@ -65,9 +65,9 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
       >
         <option>Birthday</option>
         <option>Anniversary</option>
+        <option>Date Night</option>
       </select>
-
-      <input type="submit" value="Make Your reservation" />
+      <input type="submit" value="Make Your reservation" disabled={!time} />
     </form>
   );
 };

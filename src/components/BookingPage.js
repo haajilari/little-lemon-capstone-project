@@ -9,8 +9,6 @@ const BookingPage = ({ availableTimes, dispatch, submitForm }) => {
         <h1>Reserve a Table</h1>
         <p>Please fill in the form below to book your table at Little Lemon.</p>
 
-        {console.log("Available Times in BookingPage:", availableTimes)}
-
         <BookingForm
           availableTimes={availableTimes}
           dispatch={dispatch}
